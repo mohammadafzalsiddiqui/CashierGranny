@@ -16,10 +16,8 @@ export function Navigation() {
   return (
     <StyledSidebar>
       <StyledLogoContainer>
-        <StyledLogo /> Crypto.Com AI Agent
-        <StyledCreateButton>
-          <FormOutlined />
-        </StyledCreateButton>
+        <StyledLogo /> CashierGranny
+        
       </StyledLogoContainer>
       <StyledButton
         onClick={() => console.log("Button 1 clicked")}
