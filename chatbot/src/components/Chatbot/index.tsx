@@ -1,3 +1,5 @@
+
+
 import { useState } from "react";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { chainAiInstance } from "../../integration/chain-ai.api";
@@ -24,6 +26,8 @@ import {
 import { getChatStartDate } from "../../helpers/chat.helpers";
 import { Alert, Button } from "antd";
 
+
+
 export function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
@@ -35,9 +39,12 @@ export function Chatbot() {
 
   const chatStartDate = getChatStartDate(messages);
 
+
+
   // Function to connect to MetaMask
   const connectWallet = async () => {
     try {
+      
       if (typeof window.ethereum === "undefined") {
         throw new Error("MetaMask is not installed. Please install it.");
       }
