@@ -300,9 +300,24 @@ export function Chatbot() {
 
   return (
     <StyledChatBotContainer>
-    <button className="wallet-connect" onClick={connectWallet}>
-        {walletAddress ? "Wallet Connected" : "Connect Wallet"}
-      </button>
+     <button 
+  className="wallet-connect" 
+  onClick={connectWallet} 
+  style={{
+    width: "100px", 
+    marginLeft:"700px", 
+    marginTop:"20px", 
+    padding: "2px 20px", 
+    backgroundColor: "gray", 
+    color: "white", 
+    border: "none", 
+    borderRadius: "5px", 
+    cursor: "pointer",
+    fontSize: "14px"
+  }}
+>
+  {walletAddress ? "Wallet Connected" : "Connect Wallet"}
+</button>
       <StyledChatArea>
         <StyledDateLabelContainer>
           {chatStartDate && <StyledDateLabel>{chatStartDate}</StyledDateLabel>}

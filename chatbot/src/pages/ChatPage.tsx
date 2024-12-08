@@ -1,27 +1,14 @@
-// ChatPage.tsx
 import { Chatbot } from "../components/Chatbot";
 import { Navigation } from "../components/Navigation";
-import { 
-  StyledChatPageContainer,
-  AnimatedBackground,
-  GradientOverlay,
-  FloatingParticle,
-  ContentWrapper
-} from "./styles";
+import { StyledChatPageContainer } from "./styles";
 
 export function ChatPage() {
   return (
     <StyledChatPageContainer>
-      <AnimatedBackground />
-      <GradientOverlay />
-      <FloatingParticle />
-      <FloatingParticle />
-      <FloatingParticle />
-      
       <Navigation />
-      <ContentWrapper>
+      <div style={{ width: "700px", height: "100vh", flexGrow: 1 }}>
         <Chatbot />
-      </ContentWrapper>
+      </div>
     </StyledChatPageContainer>
   );
 }
