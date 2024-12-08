@@ -20,6 +20,7 @@ export const StyledLogoContainer = styled.div`
   align-items: center;
   font-size: 16px;
   font-weight: bold;
+  color:black;
 `;
 
 export const StyledLogo = styled.div`
