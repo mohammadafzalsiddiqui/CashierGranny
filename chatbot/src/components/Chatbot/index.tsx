@@ -249,7 +249,7 @@ export function Chatbot() {
       if (confirmed) {
         // Add the invoice details to the chat
         addMessage(
-          `Invoice #1\n\nCreated\n\nFrom:\n0x486BEa6B90243d2Ff3EE2723a47605C3361c3d95\n\nBilled to:\n${senderAddress}\n\nPayment Chain:\nsepolia\n\nInvoice Currency:\nFAU\n\nSettlement Currency:\nFAU\n\nDescription\tQty\tUnit \tDiscount\tTax\tAmount\n  For Loan\nSettlements\t1\t1\t0\t1\t0\t1`,
+          `Invoice #1\n\nCreated\n\nFrom:\n0x486BEa6B90243d2Ff3EE2723a47605C3361c3d95\n\nBilled to:\n${senderAddress}\n\nPayment Chain:\nsepolia\n\nInvoice Currency:\nFAU\n\nSettlement Currency:\nFAU\n\nDescription\tQty\tUnit\tDiscount\tTax\tAmount\n  For Loan\nSettlements\t1\t1\t0\t0\t1`,
           InputType.Bot,
           false,
           false
