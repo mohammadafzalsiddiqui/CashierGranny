@@ -30,8 +30,52 @@ export function Chatbot() {
   const [context, setContext] = useState<
     Array<{ role: string; content: string }>
   >([]);
+  const [walletAddress, setWalletAddress] = useState<string | null>(null);
+
 
   const chatStartDate = getChatStartDate(messages);
+
+  // Function to connect to MetaMask
+  const connectWallet = async () => {
+    try {
+      if (typeof window.ethereum === "undefined") {
+        throw new Error("MetaMask is not installed. Please install it.");
+      }
+  
+      // Explicitly request account access every time
+      const accounts = await window.ethereum.request({
+        method: "wallet_requestPermissions",
+        params: [
+          {
+            eth_accounts: {},
+          },
+        ],
+      });
+  
+      // After requesting permissions, retrieve the accounts again
+      const updatedAccounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+  
+      if (updatedAccounts.length > 0) {
+        setWalletAddress(updatedAccounts[0]); // Save the connected wallet address
+        addMessage(
+          `Wallet connected: ${updatedAccounts[0]}`,
+          InputType.Bot,
+          false
+        );
+      } else {
+        throw new Error("No accounts found. Please try again.");
+      }
+    } catch (error: any) {
+      addMessage(
+        `Failed to connect wallet: ${error.message || "Unknown error"}`,
+        InputType.Bot,
+        false
+      );
+    }
+  };
+  
 
   const addMessage = (
     text: string,
@@ -205,20 +249,20 @@ export function Chatbot() {
       if (confirmed) {
         // Add the invoice details to the chat
         addMessage(
-          `Invoice #1\n\nCreated\n\nFrom:\n0x486BEa6B90243d2Ff3EE2723a47605C3361c3d95\n\nBilled to:\n${senderAddress}\n\nPayment Chain:\nsepolia\n\nInvoice Currency:\nFAU\n\nSettlement Currency:\nFAU\n\nDescription\tQty\tUnit Price\tDiscount\tTax\tAmount\n  For Loan Settlements\t1\t1\t0\t0\t1`,
+          `Invoice #1\n\nCreated\n\nFrom:\n0x486BEa6B90243d2Ff3EE2723a47605C3361c3d95\n\nBilled to:\n${senderAddress}\n\nPayment Chain:\nsepolia\n\nInvoice Currency:\nFAU\n\nSettlement Currency:\nFAU\n\nDescription\tQty\tUnit \tDiscount\tTax\tAmount\n  For Loan\nSettlements\t1\t1\t0\t1\t0\t1`,
           InputType.Bot,
           false,
           false
         );
   
         // Add the transaction hash as a clickable link
-        addMessage(
-          `Pay Transaction: https://invoicing.request.network/`,
-          InputType.Bot,
-          false,
-          false,
-          true
-        );
+        // addMessage(
+        //   `Pay Transaction: https://invoicing.request.network/`,
+        //   InputType.Bot,
+        //   false,
+        //   false,
+        //   true
+        //);
       }
     } catch (error: any) {
       addMessage(
@@ -256,6 +300,9 @@ export function Chatbot() {
 
   return (
     <StyledChatBotContainer>
+    <button className="wallet-connect" onClick={connectWallet}>
+        {walletAddress ? "Wallet Connected" : "Connect Wallet"}
+      </button>
       <StyledChatArea>
         <StyledDateLabelContainer>
           {chatStartDate && <StyledDateLabel>{chatStartDate}</StyledDateLabel>}

@@ -238,3 +238,4 @@ export const StyledDateLabel = styled.span`
   width: auto;
   border-radius: 26px;
 `;
+

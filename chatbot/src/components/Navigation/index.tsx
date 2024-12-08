@@ -40,11 +40,11 @@ export function Navigation() {
         Get Block Status
       </StyledButton>
       <StyledButton
-        onClick={() => console.log("Button 3 clicked")}
-        icon={<PicCenterOutlined />}
-      >
-        Dashboard
-      </StyledButton>
+  onClick={() => window.location.href = "https://invoicing.request.network/"}
+  icon={<PicCenterOutlined />}
+>
+  Dashboard
+</StyledButton>
     </StyledSidebar>
   );
 }
