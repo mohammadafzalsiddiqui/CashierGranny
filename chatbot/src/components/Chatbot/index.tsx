@@ -345,7 +345,7 @@ export function Chatbot() {
         />
         <StyledSendButton onClick={handleSend} icon={<ArrowUpOutlined />} />
       </StyledInputContainer>
-      <StyledDisclaimer>Powered by Crypto.com</StyledDisclaimer>
+      <StyledDisclaimer>Powered by Request Network</StyledDisclaimer>
     </StyledChatBotContainer>
   );
 }
